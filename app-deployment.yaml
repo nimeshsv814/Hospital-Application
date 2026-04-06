@@ -9,8 +9,8 @@ spec:
     matchLabels:
       app: hospital
   strategy:
-    type: RollingUpdates
-    rollingUpdates:
+    type: RollingUpdate
+    rollingUpdate:
       maxUnavailable: 1
       maxSurge: 1
   template:
