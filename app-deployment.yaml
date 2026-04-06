@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hospital-deploy
+  namespace: hospital-ns
 spec:
   replicas: 1
   selector:
@@ -17,12 +18,16 @@ spec:
       labels:
         app: hospital
     spec:
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+          effect: "NoSchedule"
+
       containers:
         - name: hospital-cont
           image: nimeshsv814/hospital-app:latest
           ports:
             - containerPort: 5000
-          # env:
           resources:
             requests:
               cpu: "50m"
@@ -32,15 +37,16 @@ spec:
               memory: "128Mi"
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: hospital-svc
+  namespace: hospital-ns
 spec:
   selector:
     app: hospital
   ports:
     - port: 5000
       targetPort: 5000
+      nodePort: 30007   # optional but recommended
   type: NodePort
