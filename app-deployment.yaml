@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hospital-deploy
+  namespace: hospital-ns
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: hospital
+  strategy:
+    type: RollingUpdates
+    rollingUpdates:
+      maxUnavailable
