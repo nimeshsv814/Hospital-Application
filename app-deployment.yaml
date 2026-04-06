@@ -4,11 +4,45 @@ metadata:
   name: hospital-deploy
   namespace: hospital-ns
 spec:
-  replicas: 
+  replicas: 3
   selector:
     matchLabels:
       app: hospital
   strategy:
     type: RollingUpdates
     rollingUpdates:
-      maxUnavailable
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: hospital
+    spec:
+      containers:
+        - name: hospital-cont
+          image: nimeshsv814/hospital-app:latest
+          ports:
+            - containerPort: 5000
+          # env:
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hospital-svc
+  namespace: hospital-ns
+spec:
+  selector:
+    app: hospital
+  ports:
+    - port: 5000
+      targetPort: 5000
+  type: NodePort
