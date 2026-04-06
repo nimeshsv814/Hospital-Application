@@ -29,11 +29,11 @@ spec:
             - containerPort: 27017
           env:
             - name: PORT
-              value: 5000
+              value: "5000"
             - name: ADMIN_USERNAME
-              value: admin
+              value: "admin"
             - name: ADMIN_PASSWORD
-              value: admin123
+              value: "admin123"
           resources:
             requests:
               cpu: "50m"
