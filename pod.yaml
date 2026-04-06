@@ -4,7 +4,7 @@ metadata:
   name: hospital-pod
   namespace: hospital-ns
 spec:
-  templates:
+  template:
     spec:
       containers:
         - name: hospital-cont
