@@ -9,4 +9,4 @@ spec:
       image: nimeshsv814/hospital-app:latest
       ports:
         - containerPort: 5000
-          hostPort: 5001
+          # hostPort: 5001
