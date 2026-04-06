@@ -4,10 +4,8 @@ metadata:
   name: hospital-pod
   namespace: hospital-ns
 spec:
-  template:
-    spec:
-      containers:
-        - name: hospital-cont
-          image: nimeshsv814/hospital-app:latest
-          ports:
-            - containerPort: 5000
+  containers:
+    - name: hospital-cont
+      image: nimeshsv814/hospital-app:latest
+      ports:
+        - containerPort: 5000
