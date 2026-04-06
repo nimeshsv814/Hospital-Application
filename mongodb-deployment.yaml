@@ -36,6 +36,8 @@ spec:
               value: "admin123"
             - name: JWT_SECRET
               value: "cW9UyS4q7LC63eqDUWTYFGwyHoV0tU/GtTYGyBMnVJFrf6ULh3pc6t1fFbF7EFX4RW6U5pEwF3VduOGCfoCT7Q=="
+            - name: SECRET_KEY
+              value: "cW9UyS4q7LC63eqDUWTYFGwyHoV0tU/GtTYGyBMnVJFrf6ULh3pc6t1fFbF7EFX4"
           resources:
             requests:
               cpu: "50m"
