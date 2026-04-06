@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["npm","start"]
+CMD ["node","/backend/app.js"]
